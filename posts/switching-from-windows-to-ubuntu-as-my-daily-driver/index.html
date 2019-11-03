@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Switching From Windows to Ubuntu as My Daily Driver - Eric Eskildsen&#39;s Blog</title>
+  <meta property="og:title" content="Switching From Windows to Ubuntu as My Daily Driver - Eric Eskildsen&#39;s Blog" />
+  <meta name="twitter:title" content="Switching From Windows to Ubuntu as My Daily Driver - Eric Eskildsen&#39;s …" />
+  <meta name="description" content="About a week ago, I started using Ubuntu as my daily driver instead of Windows. This post explains why and (partially) documents my setup &hellip; mostly to jog my memory when I forget half of what I did, but hopefully someone else considering a similar setup will benefit too.
+Why Not Windows 10? I like Windows. PowerShell is a fantastic abstraction of .NET, and now that it&rsquo;s cross platform, I&rsquo;ll be using it on Linux too.">
+  <meta property="og:description" content="About a week ago, I started using Ubuntu as my daily driver instead of Windows. This post explains why and (partially) documents my setup &hellip; mostly to jog my memory when I forget half of what I did, but hopefully someone else considering a similar setup will benefit too.
+Why Not Windows 10? I like Windows. PowerShell is a fantastic abstraction of .NET, and now that it&rsquo;s cross platform, I&rsquo;ll be using it on Linux too.">
+  <meta name="twitter:description" content="About a week ago, I started using Ubuntu as my daily driver instead of Windows. This post explains why and (partially) documents my setup &hellip; mostly to jog my memory when I forget half of what I …">
+  <meta name="author" content=""/>
+  <meta property="og:site_name" content="Eric Eskildsen&#39;s Blog" />
+  <meta property="og:url" content="/posts/switching-from-windows-to-ubuntu-as-my-daily-driver/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.59.0" />
+
+  <link rel="stylesheet" href="/css/style.css" media="all" />
+  <link rel="stylesheet" href="/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/css/custom.css" media="all" />
+
+  <script src="/js/script.js"></script>
+  <script src="/js/custom.js"></script>
+  <script defer src="/js/fontawesome.js"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/">Eric Eskildsen&#39;s Blog</a></h1>
+    <ul class="site-navi-items">
+    </ul>
+  </nav>
+</header>
+<hr class="site-header-bottom">
+
+  <div class="main" role="main">
+    <article class="article">
+      
+      
+      <h1 class="article-title">Switching From Windows to Ubuntu as My Daily Driver</h1>
+      
+      <hr class="article-title-bottom">
+      <ul class="article-meta">
+        <li class="article-meta-date"><time>November 3, 2019</time></li>
+      </ul>
+      
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#why-not-windows-10">Why Not Windows 10?</a></li>
+<li><a href="#window-manager-experimentation">Window Manager Experimentation</a>
+<ul>
+<li><a href="#i3wm">i3wm</a></li>
+<li><a href="#xfce">Xfce</a></li>
+</ul></li>
+<li><a href="#installing-citrix-workspace">Installing Citrix Workspace</a></li>
+<li><a href="#miscellaneous-other-changes">Miscellaneous Other Changes</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</nav>
+</aside>
+      
+
+<p>About a week ago, I started using Ubuntu as my daily driver instead of Windows. This post explains why and (partially) documents my setup &hellip; mostly to jog my memory when I forget half of what I did, but hopefully someone else considering a similar setup will benefit too.</p>
+
+<h1 id="why-not-windows-10">Why Not Windows 10?</h1>
+
+<p>I like Windows. PowerShell is a fantastic abstraction of .NET, and now that it&rsquo;s cross platform, I&rsquo;ll be using it on Linux too. But recent events inspired me to make a change.</p>
+
+<ol>
+<li>In September 2019, Microsoft removed the &ldquo;use offline account&rdquo; option for Windows 10 installations if the machine has an Internet connection.</li>
+<li>In October 2019, Adobe blocked Creative Cloud in Venezuela due to U.S. sanctions. Professionals in Venezuela who rely on Adobe for their livelihood were left without a paddle.</li>
+<li>Also in October 2019, <a href="https://news.ycombinator.com/item?id=21165736">a software developer on Hacker News shared plans to require an annual subscription to their desktop software</a> despite the fact that it was entirely on premise and didn&rsquo;t make server calls.</li>
+</ol>
+
+<p>I&rsquo;d already been growing increasingly frustrated with &ldquo;everything-as-a-service&rdquo; culture, longing for the good old days of software &ldquo;ownership&rdquo; (yes, software is licensed, not sold &hellip; but perpetual licensing is closer to ownership).</p>
+
+<p>Also, I&rsquo;ve wanted to get more familiar with Linux to use it as a server for my applications.</p>
+
+<h1 id="window-manager-experimentation">Window Manager Experimentation</h1>
+
+<h2 id="i3wm">i3wm</h2>
+
+<p>I&rsquo;d installed Xubuntu on my laptop long ago (dual boot) but hadn&rsquo;t really used it. Coming back, I started looking for ways to spruce it up. I soon found so-called rices that I liked on <a href="https://www.reddit.com/r/unixporn">r/unixporn</a> using <a href="https://i3wm.org/">i3wm</a>. I was impressed by Linux tiling window managers in general, compared to Windows&rsquo;s lackluster tiling support. I liked that i3 resized the existing grid automatically and how easy workspaces were. So I installed i3wm-gaps and started playing with my dotfiles.</p>
+
+<p>I was impressed by i3 (and I still am), but I quickly realized it was &ldquo;bring your own everything.&rdquo;</p>
+
+<ul>
+<li>Desktop background: Install <code>feh</code> and call it in <code>~/.config/i3/config</code>.</li>
+<li>Volume: Add <code>pactl</code> keybindings.</li>
+<li>Multiple monitor support: Learn <code>xrandr</code>.</li>
+</ul>
+
+<p>I&rsquo;d bitten off more than I could chew. Remembering why I switched in the first place, I decided to go back to Xfce for the time being and possibly return to i3wm when I was more comfortable.</p>
+
+<h2 id="xfce">Xfce</h2>
+
+<p>Xfce felt like coming home. The UI was familiar but felt faster than Windows had been on my machine. Plus there was no telemetry or Cortana to worry about. However, I didn&rsquo;t care for how it looked.</p>
+
+<p>Going to back to <a href="https://www.reddit.com/r/unixporn">r/unixporn</a>, I hunted up some Xfce rices. <a href="https://www.reddit.com/r/unixporn/comments/dav66r/xfce_nordic_xfce/">I soon found one I liked</a> and set about replicating it.</p>
+
+<ol>
+<li>Theme: Nordic-standard-buttons. At first I was confused because <a href="https://www.reddit.com/r/unixporn/comments/dav66r/xfce_nordic_xfce/f1uvae2?utm_source=share&amp;utm_medium=web2x">OP calls the theme just &ldquo;Nordic&rdquo; in the comments</a>, but if you look at the screenshot, <code>Nordic-standard-buttons</code> is the actual name. (I originally assumed <code>Nordic-standard-buttons</code> was some kind of add-on, not a theme itself.)
+
+<ol>
+<li>Download: <a href="https://github.com/EliverLara/Nordic/releases">https://github.com/EliverLara/Nordic/releases</a></li>
+<li>Extract: <code>sudo tar xf Nordic-standard-buttons.tar.xf /usr/share/themes</code></li>
+<li>Apply
+
+<ol>
+<li>Open <em>Appearance</em> (open the whiskers menu and search for <em>Appearance</em>) and click <em>Nordic</em> on the <em>Style</em> tab</li>
+<li>Open <em>Window Manager</em> (same process as the previous step) and click <em>Nordic</em> on the <em>Style</em> tab</li>
+</ol></li>
+</ol></li>
+<li>Icons: Nordic
+
+<ol>
+<li>Download: <a href="https://www.gnome-look.org/p/1267246/">https://www.gnome-look.org/p/1267246/</a>
+
+<ul>
+<li>I couldn&rsquo;t find it on the GitHub repo&rsquo;s releases page or I&rsquo;d have downloaded it there</li>
+</ul></li>
+<li>Extract into <code>~/.icons/</code></li>
+<li>Open <em>Appearance</em> and click <em>Nordic</em> on the <em>Icons</em> tab</li>
+</ol></li>
+</ol>
+
+<h1 id="installing-citrix-workspace">Installing Citrix Workspace</h1>
+
+<p>My work uses Citrix, so I needed to install Citrix Workspace to connect to a work VM. The download page for Linux is <a href="https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html">https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html</a>.</p>
+
+<p>After installation, I tried to connect and got the error:</p>
+
+<blockquote>
+<p>SSL error<br />
+Contact your help desk with the folling information: You have not chosen to trust &ldquo;DigiCert High Assurance EV Root CA&rdquo;, the issuer of the server&rsquo;s security certificate (SSL error 61)</p>
+</blockquote>
+
+<p>Copying the certificate from <code>/etc/ssl/certs/</code> into the Citrix client&rsquo;s <code>cacerts</code> directory resolved it:</p>
+
+<pre><code>sudo cp -v /etc/ssl/certs/DigiCert_High_Assurance_EV_Root_CA.pem /opt/Citrix/ICAClient/keystore/cacerts/
+</code></pre>
+
+<h1 id="miscellaneous-other-changes">Miscellaneous Other Changes</h1>
+
+<ul>
+<li>Changed the whisker menu shortcut to <kbd>Super</kbd> + <kbd>Space</kbd> (launch <em>Keyboard</em>, go to the <em>Application Shortcuts</em> tab, scroll to <code>xfce4-popup-whiskermenu</code>, and click <em>Edit</em>)</li>
+<li>Installed Mono (in order to use KeePass) via the instructions <a href="https://www.mono-project.com/download/stable/#download-lin">here</a></li>
+<li>Installed Remmina (for RDP) using the Software app</li>
+</ul>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>It&rsquo;s going well so far. I plan to stick with it. I see more pros than cons at this point because there are still stars in my eyes, but there are definitely both.</p>
+
+<p>Pros:</p>
+
+<ul>
+<li><strong>Free as in beer:</strong> If I want to create a product whose infrastructure requires hundreds or thousands of VM instances, I don&rsquo;t have to worry about licensing costs.</li>
+<li><strong>Free as in speech:</strong> I can hack the source code if I need to.</li>
+<li><strong>Free of bloatware:</strong> There&rsquo;s no Cortana trying to search the Internet when I search the Start menu. (If I wanted to search the Internet, I&rsquo;d have opened a browser!)</li>
+<li><strong>Free of forced updates:</strong> I love that I can restart my computer without Microsoft making me update. (I&rsquo;m about to give a presentation; I really need to reboot fast!)</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li><strong>AutoHotkey:</strong> I have lots of AutoHotkey scripts on Windows. <a href="https://unix.stackexchange.com/questions/165124/autohotkey-equivalent">The word on StackExchange is that AutoHotkey doesn&rsquo;t run well on Linux, although it can be run through Wine.</a></li>
+<li><strong>Unfamiliarity:</strong> I have to stop to Google something more often than I would on Windows.</li>
+</ul>
+
+    </article>
+
+    
+
+
+    <ul class="pager article-pager">
+      <li class="pager-newer pager-noitem">&lt; Newer</li>
+      <li class="pager-older pager-noitem">Older &gt;</li>
+    </ul>
+  </div>
+
+
+<div class="site-footer">
+  <div class="copyright"></div>
+  <ul class="site-footer-items">
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Eric Eskildsen&#39;s Blog</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on Eric Eskildsen&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Nov 2019 10:34:21 -0500</lastBuildDate>
+    
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Switching From Windows to Ubuntu as My Daily Driver</title>
+      <link>/posts/switching-from-windows-to-ubuntu-as-my-daily-driver/</link>
+      <pubDate>Sun, 03 Nov 2019 10:34:21 -0500</pubDate>
+      
+      <guid>/posts/switching-from-windows-to-ubuntu-as-my-daily-driver/</guid>
+      <description>About a week ago, I started using Ubuntu as my daily driver instead of Windows. This post explains why and (partially) documents my setup &amp;hellip; mostly to jog my memory when I forget half of what I did, but hopefully someone else considering a similar setup will benefit too.
+Why Not Windows 10? I like Windows. PowerShell is a fantastic abstraction of .NET, and now that it&amp;rsquo;s cross platform, I&amp;rsquo;ll be using it on Linux too.</description>
+    </item>
+    
+  </channel>
+</rss>
