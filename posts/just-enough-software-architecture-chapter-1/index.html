@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Just Enough Software Architecture: Chapter 1 - Eric Eskildsen&#39;s Blog</title>
+  <meta property="og:title" content="Just Enough Software Architecture: Chapter 1 - Eric Eskildsen&#39;s Blog" />
+  <meta name="twitter:title" content="Just Enough Software Architecture: Chapter 1 - Eric Eskildsen&#39;s Blog" />
+  <meta name="description" content="This series loosely summarizes George Fairbanks&rsquo;s Just Enough Software Architecture: A Risk-Driven Approach as I read through it.
+ Intro Software is getting harder. It may be the most complicated thing humans have ever built. Consequently, we need tools to approach it with.
+3 Tools To Approach Software With  Partitioning: Separate parts of a project. This lets you forget about the details. &ldquo;I have a thousand classes in this project.">
+  <meta property="og:description" content="This series loosely summarizes George Fairbanks&rsquo;s Just Enough Software Architecture: A Risk-Driven Approach as I read through it.
+ Intro Software is getting harder. It may be the most complicated thing humans have ever built. Consequently, we need tools to approach it with.
+3 Tools To Approach Software With  Partitioning: Separate parts of a project. This lets you forget about the details. &ldquo;I have a thousand classes in this project.">
+  <meta name="twitter:description" content="This series loosely summarizes George Fairbanks&rsquo;s Just Enough Software Architecture: A Risk-Driven Approach as I read through it.
+ Intro Software is getting harder. It may be the most …">
+  <meta name="author" content=""/>
+  <meta property="og:site_name" content="Eric Eskildsen&#39;s Blog" />
+  <meta property="og:url" content="/posts/just-enough-software-architecture-chapter-1/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.59.0" />
+
+  <link rel="stylesheet" href="/css/style.css" media="all" />
+  <link rel="stylesheet" href="/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/css/custom.css" media="all" />
+
+  <script src="/js/script.js"></script>
+  <script src="/js/custom.js"></script>
+  <script defer src="/js/fontawesome.js"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/">Eric Eskildsen&#39;s Blog</a></h1>
+    <ul class="site-navi-items">
+    </ul>
+  </nav>
+</header>
+<hr class="site-header-bottom">
+
+  <div class="main" role="main">
+    <article class="article">
+      
+      
+      <h1 class="article-title">Just Enough Software Architecture: Chapter 1</h1>
+      
+      <hr class="article-title-bottom">
+      <ul class="article-meta">
+        <li class="article-meta-date"><time>November 6, 2019</time></li>
+      </ul>
+      
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#3-tools-to-approach-software-with">3 Tools To Approach Software With</a></li>
+<li><a href="#what-is-architecture">What Is Architecture?</a>
+<ul>
+<li><a href="#quality-attributes-compete">Quality Attributes Compete</a></li>
+<li><a href="#conceptual-models-help">Conceptual Models Help</a></li>
+</ul></li>
+<li><a href="#abstractions-and-constraints-are-useful">Abstractions and Constraints Are Useful</a></li>
+<li><a href="#what-s-risk-driven-architecture">What&rsquo;s Risk-Driven Architecture?</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+      
+
+<blockquote>
+<p>This series loosely summarizes George Fairbanks&rsquo;s <em>Just Enough Software Architecture: A Risk-Driven Approach</em> as I read through it.</p>
+</blockquote>
+
+<h2 id="intro">Intro</h2>
+
+<p>Software is getting harder. It may be the most complicated thing humans have ever built. Consequently, we need tools to approach it with.</p>
+
+<h2 id="3-tools-to-approach-software-with">3 Tools To Approach Software With</h2>
+
+<ul>
+<li><strong>Partitioning:</strong> Separate parts of a project. This lets you forget about the details. &ldquo;I have a thousand classes in this project. Let me break it up into 10 libraries.&rdquo;</li>
+<li><strong>Knowledge:</strong> &ldquo;I&rsquo;ve solved this problem before.&rdquo; &ldquo;This is close to a pattern I know. Let me use it to help clean up my code.&rdquo;</li>
+<li><strong>Abstraction:</strong> When driving from point A to point B, think about the roads, not the fields and parking lots.</li>
+</ul>
+
+<h2 id="what-is-architecture">What Is Architecture?</h2>
+
+<p>Architecture is:</p>
+
+<ul>
+<li>A tool that helps you with partitioning, knowledge, and abstraction</li>
+<li>&ldquo;Macroscopic design of a software system&rdquo;</li>
+</ul>
+
+<p>Architecture is <em>not</em> functionality. Systems with different architectures can do the same job.</p>
+
+<p>Example: Rackspace&rsquo;s email logging system. Version 1 was created when they were small. As they grew, they developed version 2, then version 3. Different architectures, same functionality.</p>
+
+<ol>
+<li><strong>Version 1:</strong> Log files lived locally on the email servers. There was a tool that <code>ssh</code>ed into the servers to grab the log files and do stuff with them.</li>
+<li><strong>Version 2:</strong> The email servers logged to a central database.</li>
+<li><strong>Version 3:</strong> The email servers logged to Hadoop Distributed File System.</li>
+</ol>
+
+<h3 id="quality-attributes-compete">Quality Attributes Compete</h3>
+
+<p>There are tradeoffs. If your architecture is super performant, development may be complicated (cf. native vs. Electron). If it&rsquo;s super scalable, it may not be flexible.</p>
+
+<h3 id="conceptual-models-help">Conceptual Models Help</h3>
+
+<p>A software architect could look at Rackspace&rsquo;s 3 versions and see patterns. This would help them reason about which one is best in a given situation.</p>
+
+<h2 id="abstractions-and-constraints-are-useful">Abstractions and Constraints Are Useful</h2>
+
+<p>It&rsquo;s easier to think about small problems than big ones. An abstraction such as <em>job</em> helps you understand what something does right away (it runs, it may have a schedule, etc.).</p>
+
+<h2 id="what-s-risk-driven-architecture">What&rsquo;s Risk-Driven Architecture?</h2>
+
+<p>Approaching architecture from the perspective of risk helps you reason about how much is enough and how much is too much.</p>
+
+<p>Example: The author&rsquo;s father has 2 mechanical engineering degrees. But when he put in a mailbox, he didn&rsquo;t &ldquo;calculate moments, stresses, and strains.&rdquo; He just stuck it in the ground. Why? Low risk.</p>
+
+<p>In contrast, consider Friendster. They should&rsquo;ve expected high traffic and architected for it. Instead their site got slow, and competitors like MySpace and Facebook beat them.</p>
+
+<p><em>Risk-driven architecture</em> is about choosing just enough architecture for the task at hand. If the only risk can be handled by refactoring, do <em>no</em> architecture.</p>
+
+    </article>
+
+    
+
+
+    <ul class="pager article-pager">
+      <li class="pager-newer pager-noitem">&lt; Newer</li>
+      <li class="pager-older">
+        <a href="/posts/switching-from-windows-to-ubuntu-as-my-daily-driver/" data-toggle="tooltip" data-placement="top" title="Switching From Windows to Ubuntu as My Daily Driver">Older &gt;</a>
+      </li>
+    </ul>
+  </div>
+
+
+<div class="site-footer">
+  <div class="copyright"></div>
+  <ul class="site-footer-items">
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
+  </div>
+</div>
+
+
+</body>
+</html>
