@@ -6,10 +6,21 @@
     <description>Recent content on Eric Eskildsen&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Nov 2019 11:25:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 24 Dec 2019 10:19:14 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My Ubuntu Setup</title>
+      <link>/posts/documenting-my-ubuntu-setup/</link>
+      <pubDate>Tue, 24 Dec 2019 10:19:14 -0500</pubDate>
+      
+      <guid>/posts/documenting-my-ubuntu-setup/</guid>
+      <description>This post is a work in progress.
+ I switched from Windows to Ubuntu as my daily driver a couple months ago. It&amp;rsquo;s been great fun and a great learning experience. At this point, I&amp;rsquo;ve customized it so much that I figured I should create a knowledge dump for reference when starting from scratch.
+Desktop Environment and Window Manager I use i3 on top of Xfce. There&amp;rsquo;s overlap, but they serve different purposes for me:</description>
+    </item>
     
     <item>
       <title>Just Enough Software Architecture: Chapter 1</title>

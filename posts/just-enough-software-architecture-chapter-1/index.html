@@ -55,32 +55,30 @@
 <aside class="toc">
   <nav id="TableOfContents">
 <ul>
-<li>
-<ul>
 <li><a href="#intro">Intro</a></li>
 <li><a href="#3-tools-to-approach-software-with">3 Tools To Approach Software With</a></li>
-<li><a href="#what-is-architecture">What Is Architecture?</a>
+<li><a href="#what-s-architecture">What&rsquo;s Architecture?</a>
 <ul>
+<li><a href="#architecture-isn-t-functionality">Architecture Isn&rsquo;t Functionality</a></li>
 <li><a href="#quality-attributes-compete">Quality Attributes Compete</a></li>
 <li><a href="#conceptual-models-help">Conceptual Models Help</a></li>
 </ul></li>
 <li><a href="#abstractions-and-constraints-are-useful">Abstractions and Constraints Are Useful</a></li>
 <li><a href="#what-s-risk-driven-architecture">What&rsquo;s Risk-Driven Architecture?</a></li>
-</ul></li>
 </ul>
 </nav>
 </aside>
       
 
 <blockquote>
-<p>This series loosely summarizes George Fairbanks&rsquo;s <em>Just Enough Software Architecture: A Risk-Driven Approach</em> as I read through it.</p>
+<p><em>This series loosely summarizes George Fairbanks&rsquo;s</em> Just Enough Software Architecture: A Risk-Driven Approach <em>as I read through it.</em></p>
 </blockquote>
 
-<h2 id="intro">Intro</h2>
+<h1 id="intro">Intro</h1>
 
 <p>Software is getting harder. It may be the most complicated thing humans have ever built. Consequently, we need tools to approach it with.</p>
 
-<h2 id="3-tools-to-approach-software-with">3 Tools To Approach Software With</h2>
+<h1 id="3-tools-to-approach-software-with">3 Tools To Approach Software With</h1>
 
 <ul>
 <li><strong>Partitioning:</strong> Separate parts of a project. This lets you forget about the details. &ldquo;I have a thousand classes in this project. Let me break it up into 10 libraries.&rdquo;</li>
@@ -88,18 +86,20 @@
 <li><strong>Abstraction:</strong> When driving from point A to point B, think about the roads, not the fields and parking lots.</li>
 </ul>
 
-<h2 id="what-is-architecture">What Is Architecture?</h2>
+<h1 id="what-s-architecture">What&rsquo;s Architecture?</h1>
 
 <p>Architecture is:</p>
 
 <ul>
-<li>A tool that helps you with partitioning, knowledge, and abstraction</li>
+<li>A tool that helps you use the tools above</li>
 <li>&ldquo;Macroscopic design of a software system&rdquo;</li>
 </ul>
 
-<p>Architecture is <em>not</em> functionality. Systems with different architectures can do the same job.</p>
+<h2 id="architecture-isn-t-functionality">Architecture Isn&rsquo;t Functionality</h2>
 
-<p>Example: Rackspace&rsquo;s email logging system. Version 1 was created when they were small. As they grew, they developed version 2, then version 3. Different architectures, same functionality.</p>
+<p>Architecture is separate from functionality. Systems with different architectures can do the same job.</p>
+
+<p>Start simple. Change the architecture when you need to. Rackspace did this with an email logging system. As they grew, they changed the architecture.</p>
 
 <ol>
 <li><strong>Version 1:</strong> Log files lived locally on the email servers. There was a tool that <code>ssh</code>ed into the servers to grab the log files and do stuff with them.</li>
@@ -107,19 +107,19 @@
 <li><strong>Version 3:</strong> The email servers logged to Hadoop Distributed File System.</li>
 </ol>
 
-<h3 id="quality-attributes-compete">Quality Attributes Compete</h3>
+<h2 id="quality-attributes-compete">Quality Attributes Compete</h2>
 
-<p>There are tradeoffs. If your architecture is super performant, development may be complicated (cf. native vs. Electron). If it&rsquo;s super scalable, it may not be flexible.</p>
+<p>There are tradeoffs. If your system is super performant, development may be difficult. If it&rsquo;s super scalable, it may not be flexible.</p>
 
-<h3 id="conceptual-models-help">Conceptual Models Help</h3>
+<h2 id="conceptual-models-help">Conceptual Models Help</h2>
 
 <p>A software architect could look at Rackspace&rsquo;s 3 versions and see patterns. This would help them reason about which one is best in a given situation.</p>
 
-<h2 id="abstractions-and-constraints-are-useful">Abstractions and Constraints Are Useful</h2>
+<h1 id="abstractions-and-constraints-are-useful">Abstractions and Constraints Are Useful</h1>
 
-<p>It&rsquo;s easier to think about small problems than big ones. An abstraction such as <em>job</em> helps you understand what something does right away (it runs, it may have a schedule, etc.).</p>
+<p>It&rsquo;s easier to think about small problems than big ones. An abstraction like &ldquo;job&rdquo; helps you understand what something does right away (it runs, it may have a schedule, etc.).</p>
 
-<h2 id="what-s-risk-driven-architecture">What&rsquo;s Risk-Driven Architecture?</h2>
+<h1 id="what-s-risk-driven-architecture">What&rsquo;s Risk-Driven Architecture?</h1>
 
 <p>Approaching architecture from the perspective of risk helps you reason about how much is enough and how much is too much.</p>
 
@@ -135,7 +135,9 @@
 
 
     <ul class="pager article-pager">
-      <li class="pager-newer pager-noitem">&lt; Newer</li>
+      <li class="pager-newer">
+          <a href="/posts/documenting-my-ubuntu-setup/" data-toggle="tooltip" data-placement="top" title="My Ubuntu Setup">&lt; Newer</a>
+      </li>
       <li class="pager-older">
         <a href="/posts/switching-from-windows-to-ubuntu-as-my-daily-driver/" data-toggle="tooltip" data-placement="top" title="Switching From Windows to Ubuntu as My Daily Driver">Older &gt;</a>
       </li>
