@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Just Enough Software Architecture: Chapter 3 - Eric Eskildsen&#39;s Blog</title>
+  <meta property="og:title" content="Just Enough Software Architecture: Chapter 3 - Eric Eskildsen&#39;s Blog" />
+  <meta name="twitter:title" content="Just Enough Software Architecture: Chapter 3 - Eric Eskildsen&#39;s Blog" />
+  <meta name="description" content="This series loosely summarizes George Fairbanks&rsquo;s Just Enough Software Architecture: A Risk-Driven Approach as I read through it.
+ Chapter 3 of Just Enough Software Architecture details the how of the risk-driven model. How should it be applied? What techniques should be used?
+Are You Risk-Driven? Some teams think they&rsquo;re already risk-driven when they&rsquo;re not. How can you know for sure?
+Look at your processes. Do you have rigid rules?">
+  <meta property="og:description" content="This series loosely summarizes George Fairbanks&rsquo;s Just Enough Software Architecture: A Risk-Driven Approach as I read through it.
+ Chapter 3 of Just Enough Software Architecture details the how of the risk-driven model. How should it be applied? What techniques should be used?
+Are You Risk-Driven? Some teams think they&rsquo;re already risk-driven when they&rsquo;re not. How can you know for sure?
+Look at your processes. Do you have rigid rules?">
+  <meta name="twitter:description" content="This series loosely summarizes George Fairbanks&rsquo;s Just Enough Software Architecture: A Risk-Driven Approach as I read through it.
+ Chapter 3 of Just Enough Software Architecture details the how …">
+  <meta name="author" content=""/>
+  <meta property="og:site_name" content="Eric Eskildsen&#39;s Blog" />
+  <meta property="og:url" content="/posts/just-enough-software-architecture-chapter-3/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.59.0" />
+
+  <link rel="stylesheet" href="/css/style.css" media="all" />
+  <link rel="stylesheet" href="/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/css/custom.css" media="all" />
+
+  <script src="/js/script.js"></script>
+  <script src="/js/custom.js"></script>
+  <script defer src="/js/fontawesome.js"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/">Eric Eskildsen&#39;s Blog</a></h1>
+    <ul class="site-navi-items">
+    </ul>
+  </nav>
+</header>
+<hr class="site-header-bottom">
+
+  <div class="main" role="main">
+    <article class="article">
+      
+      
+      <h1 class="article-title">Just Enough Software Architecture: Chapter 3</h1>
+      
+      <hr class="article-title-bottom">
+      <ul class="article-meta">
+        <li class="article-meta-date"><time>January 6, 2020</time></li>
+      </ul>
+      
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#are-you-risk-driven">Are You Risk-Driven?</a></li>
+<li><a href="#risks">Risks</a></li>
+<li><a href="#techniques">Techniques</a>
+<ul>
+<li><a href="#how-many-techniques-should-you-use">How Many Techniques Should You Use?</a></li>
+<li><a href="#spectrum">Spectrum</a></li>
+<li><a href="#choosing-techniques">Choosing Techniques</a></li>
+</ul></li>
+<li><a href="#evolutionary-design-vs-planned-design">Evolutionary Design vs. Planned Design</a></li>
+<li><a href="#software-development-processes">Software Development Processes</a></li>
+<li><a href="#architecture-refactoring">Architecture Refactoring</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+      
+
+<blockquote>
+<p><em>This series loosely summarizes George Fairbanks&rsquo;s</em> Just Enough Software Architecture: A Risk-Driven Approach <em>as I read through it.</em></p>
+</blockquote>
+
+<p>Chapter 3 of <em>Just Enough Software Architecture</em> details the <em>how</em> of the risk-driven model. How should it be applied? What techniques should be used?</p>
+
+<h2 id="are-you-risk-driven">Are You Risk-Driven?</h2>
+
+<p>Some teams think they&rsquo;re already risk-driven when they&rsquo;re not. How can you know for sure?</p>
+
+<p>Look at your processes. Do you have rigid rules? They can be well-intentioned, but they might be stopping you from being truly risk-driven.</p>
+
+<p>For example, consider this rule:</p>
+
+<blockquote>
+<p>Developers have to write a documentation package for each project.</p>
+</blockquote>
+
+<p>It may sound reasonable, but for many projects, the risks don&rsquo;t merit it.</p>
+
+<h2 id="risks">Risks</h2>
+
+<p>What <em>is</em> a risk? One definition is <code>probability of failure × perceived impact</code>.</p>
+
+<p>Risks differ by role. Engineering risks are things like, &ldquo;Will it scale?&rdquo; Project management risks are things like, &ldquo;Will the customer like it?&rdquo;</p>
+
+<p>Risks can be prioritized by:</p>
+
+<ul>
+<li>Priority to stakeholders</li>
+<li>How hard they&rsquo;ll be to achieve for the development team</li>
+</ul>
+
+<p>The second point above is a way to <em>identify</em> risks as well: Find difficult requirements.</p>
+
+<h2 id="techniques">Techniques</h2>
+
+<p>Techniques are ways of reducing risks&mdash;strategies you can apply.</p>
+
+<h3 id="how-many-techniques-should-you-use">How Many Techniques Should You Use?</h3>
+
+<p>Possibilities include:</p>
+
+<ol>
+<li>None
+
+<ul>
+<li>Let the chips fall where they may.</li>
+</ul></li>
+<li>Yardstick
+
+<ul>
+<li>Spend a predetermined amount of time designing, like 33%.</li>
+</ul></li>
+<li>Documentation package
+
+<ul>
+<li>Thoroughly document your software package. This is often unnecessary unless you&rsquo;re &ldquo;$BIGCOMPANY,&rdquo; as Fairbanks puts it. If you&rsquo;re a team of 5 co-located developers, it&rsquo;s overkill.</li>
+</ul></li>
+<li>Ad hoc
+
+<ul>
+<li>Decide how much design to do as you go along.</li>
+</ul></li>
+</ol>
+
+<p>Fairbanks recommends using a <em>risk-driven model</em> to choose your answer.</p>
+
+<ol>
+<li>Find your risks</li>
+<li>Prioritize them</li>
+<li>Choose <em>techniques</em> for dealing with them</li>
+<li>Apply the techniques</li>
+<li>Evaluate how effectively the risks were reduced</li>
+</ol>
+
+<h3 id="spectrum">Spectrum</h3>
+
+<p>Techniques lie on a spectrum. <em>Analysis</em> is one end, <em>solution</em> the other.</p>
+
+<ul>
+<li>Analysis: You develop and test your own designs.</li>
+<li>Solution: You use a known-good technique, like <em>facade</em> from the Gang of Four.</li>
+</ul>
+
+<p>The risk-driven model focuses on the analysis end of the spectrum, the Wild West.</p>
+
+<p>Look for an &ldquo;optimal basket&rdquo; of techniques to use. Why <em>an optimal basket</em> and not <em>everything and the kitchen sink</em>? Because you have finite time and resources. You can never fully eliminate <em>all</em> risks.</p>
+
+<h3 id="choosing-techniques">Choosing Techniques</h3>
+
+<p>When choosing which techniques to apply, it helps to determine what kind of problem you&rsquo;re solving.</p>
+
+<p>There are problems to <em>find</em> and problems to <em>prove</em>. Problems to find have straightforward answers, like 2 + 2. Problems to prove are more complex, involving more ambiguity and uncertainty.</p>
+
+<p>There are problems that are best addressed by <em>analogic models</em> and problems that are best addressed by <em>analytical models</em>. Analogic models have representations of objects, like the blips on radar screens representing planes. Analytical models are more abstract, like mathematical equations.</p>
+
+<p>There are problems that can only be efficiently analyzed using certain types of models, called <em>viewtypes</em>, on which more in Chapter 9.</p>
+
+<p>There are problems that have <em>affinities</em>, which are techniques that go well with them, like hammers with nails.</p>
+
+<h2 id="evolutionary-design-vs-planned-design">Evolutionary Design vs. Planned Design</h2>
+
+<p>Evolutionary design is designing as you go, while planned design is up-front design.</p>
+
+<p>Evolutionary design has been &ldquo;re-invigorated&rdquo; by TDD and other agile practices. Planned design is still useful, especially in projects where refactoring is impractical. Imagine using evolutionary design to build a bridge, for example.</p>
+
+<p><em>Minimal planned design</em> is a compromise between evolutionary design and planned design. You do some initial design to make sure the biggest risks are accounted for, then use evolutionary design.</p>
+
+<h2 id="software-development-processes">Software Development Processes</h2>
+
+<p>The risk-driven model works with all types of software development processes, from waterfall to agile.</p>
+
+<p>How can you use it with agile, though, since agile is feature-focused? Well, you can treat risks like features. Educate the project owner as to what priority risks should have, and put them in the backlog.</p>
+
+<p>Other techniques include:</p>
+
+<ul>
+<li>Having a Sprint 0 just for design (not features)</li>
+<li>Handling small risks within sprints, as they come up</li>
+</ul>
+
+<h2 id="architecture-refactoring">Architecture Refactoring</h2>
+
+<p>As you implement a system, you may realize the original design stunk. Failure risk tells you whether you should rewrite or whether it&rsquo;s good enough as is.</p>
+
+    </article>
+
+    
+
+
+    <ul class="pager article-pager">
+      <li class="pager-newer pager-noitem">&lt; Newer</li>
+      <li class="pager-older">
+        <a href="/posts/documenting-my-ubuntu-setup/" data-toggle="tooltip" data-placement="top" title="My Ubuntu Setup">Older &gt;</a>
+      </li>
+    </ul>
+  </div>
+
+
+<div class="site-footer">
+  <div class="copyright"></div>
+  <ul class="site-footer-items">
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
+  </div>
+</div>
+
+
+</body>
+</html>
